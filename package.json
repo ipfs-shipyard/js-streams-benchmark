@@ -1,0 +1,20 @@
+{
+  "name": "streams-benchmark",
+  "version": "1.0.0",
+  "description": "A benchmark that compares node streams, web streams, and duplex iterables",
+  "homepage": "https://github.com/ipfs-shipyard/js-streams-benchmark#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipfs-shipyard/js-streams-benchmark.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "it-pipe": "^3.0.1"
+  }
+}
