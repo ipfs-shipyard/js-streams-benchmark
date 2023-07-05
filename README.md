@@ -4,7 +4,7 @@
 
 This benchmark can be run periodically to see if web streams are catching node streams in terms of performance between difference node versions.
 
-## Usage
+## Usage
 
 ```console
 % npm start
