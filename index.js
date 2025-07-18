@@ -1,7 +1,7 @@
 import { Readable, Writable } from 'node:stream'
 import { pipe } from 'it-pipe'
 
-const ITERATIONS = 1000
+const ITERATIONS = 1_000
 
 function createData () {
   return new Array(1024).fill(0).map(() => new Uint8Array(1024))
@@ -205,6 +205,30 @@ async function webByteStreamsAsItDuplex () {
   await webStreamsAsItDuplex({ type: 'bytes'})
 }
 
+async function eventTarget () {
+  const data = createData()
+  const output = []
+
+  await new Promise((resolve, reject) => {
+    const readable = new EventTarget()
+
+    readable.addEventListener('data', (evt) => {
+      output.push(evt.detail)
+
+      if (output.length === data.length) {
+        resolve()
+        return
+      }
+    })
+
+    for (const buf of data) {
+      readable.dispatchEvent(new CustomEvent('data', {
+        detail: buf
+      }))
+    }
+  })
+}
+
 const tests = {
   'node streams': nodeStreams,
   'node streams as web streams': nodeStreamsAsWebStreams,
@@ -213,7 +237,8 @@ const tests = {
   'duplex async iterators': itDuplex,
   'node streams as duplex async iterator': nodeStreamsAsItDuplex,
   'web streams as duplex async iterator': webStreamsAsItDuplex,
-  'web byte streams as duplex async iterator': webByteStreamsAsItDuplex
+  'web byte streams as duplex async iterator': webByteStreamsAsItDuplex,
+  'event target': eventTarget
 }
 
 // warmup

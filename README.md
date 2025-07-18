@@ -8,16 +8,20 @@ This benchmark can be run periodically to see if web streams are catching node s
 
 ```console
 % npm start
+> stream-benchmark@1.0.0 start
+> node index.js
+
 ┌─────────┬─────────────────────────────────────────────┬──────┬───────┐
-│ (index) │                    Name                     │ Time │ Ops/s │
+│ (index) │ Name                                        │ Time │ Ops/s │
 ├─────────┼─────────────────────────────────────────────┼──────┼───────┤
-│    0    │               'node streams'                │ 500  │  0.5  │
-│    1    │          'duplex async iterators'           │ 660  │ 0.66  │
-│    2    │   'node streams as duplex async iterator'   │ 744  │ 0.744 │
-│    3    │                'web streams'                │ 1713 │ 1.713 │
-│    4    │   'web streams as duplex async iterator'    │ 1797 │ 1.797 │
-│    5    │             'web byte streams'              │ 1988 │ 1.988 │
-│    6    │ 'web byte streams as duplex async iterator' │ 2061 │ 2.061 │
-│    7    │        'node streams as web streams'        │ 2151 │ 2.151 │
+│ 0       │ 'node streams'                              │ 360  │ 0.36  │
+│ 1       │ 'event target'                              │ 371  │ 0.371 │
+│ 2       │ 'duplex async iterators'                    │ 494  │ 0.494 │
+│ 3       │ 'node streams as duplex async iterator'     │ 684  │ 0.684 │
+│ 4       │ 'web streams'                               │ 1092 │ 1.092 │
+│ 5       │ 'web streams as duplex async iterator'      │ 1162 │ 1.162 │
+│ 6       │ 'web byte streams'                          │ 1246 │ 1.246 │
+│ 7       │ 'node streams as web streams'               │ 1278 │ 1.278 │
+│ 8       │ 'web byte streams as duplex async iterator' │ 1521 │ 1.521 │
 └─────────┴─────────────────────────────────────────────┴──────┴───────┘
 ```
