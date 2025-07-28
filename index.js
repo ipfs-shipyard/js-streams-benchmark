@@ -263,7 +263,7 @@ for (const [name, test] of Object.entries(tests)) {
   results.push({
     'Name': name,
     'Time': time,
-    'Ops/s': time/ITERATIONS
+    'Ops/s': ITERATIONS/time
   })
 }
 
